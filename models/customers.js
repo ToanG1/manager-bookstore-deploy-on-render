@@ -13,16 +13,16 @@ const customerSchema = new mongoose.Schema({
         type: String
     },
     shippingAddressId: {
-        type: Number
+        type: Object
     },
     billingAddressId:{
-        type: Number
+        type: Object
     },
     userEmailId: {
-        type: String
+        type: Object
     },
     cartId:{
-        type: Number
+        type: Object
     }
 });
 // autoIncrement.initialize(mongoose.connection);

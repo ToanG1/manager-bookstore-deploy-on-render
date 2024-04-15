@@ -9,10 +9,10 @@ const cartItemSchema = new mongoose.Schema({
         type: Number
     },
     cart_id: {
-        type: Number
+        type: Object
     },
     product_id: {
-        type: Number
+        type: Object
     }
 });
 // autoIncrement.initialize(mongoose.connection);

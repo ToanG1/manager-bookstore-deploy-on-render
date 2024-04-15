@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
     customer_id: {
-        type: Number
+        type: Object
     },
     shippingAddress_id: {
-        type: Number
+        type: Object
     },
     totalPrice: {
         type: Number

@@ -3,18 +3,18 @@ const mongoose = require('mongoose');
 
 const orderDetailSchema = new mongoose.Schema({
     order_id: {
-        type: Number
+        type: Object
     },
     product_id: {
-        type: Number
+        type: Object
     },
     quantity: {
         type: Number
     }
 });
-// autoIncrement.initialize(mongoose.connection);
+autoIncrement.initialize(mongoose.connection);
 
-// orderDetailSchema.plugin(autoIncrement.plugin, 'orderDetail');
+orderDetailSchema.plugin(autoIncrement.plugin, 'orderDetail');
 
 const OrderDetail = mongoose.model('OrderDetail', orderDetailSchema, 'orderDetail');
 
