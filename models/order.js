@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const autoIncrement = require('mongoose-auto-increment');
+// const autoIncrement = require('mongoose-auto-increment');
 
 const orderSchema = new mongoose.Schema({
     customer_id: {
@@ -17,9 +17,9 @@ const orderSchema = new mongoose.Schema({
     }
 });
 
-autoIncrement.initialize(mongoose.connection);
+// autoIncrement.initialize(mongoose.connection);
 
-orderSchema.plugin(autoIncrement.plugin, 'salesOrder');
+// orderSchema.plugin(autoIncrement.plugin, 'salesOrder');
 
 const Order = mongoose.model('Order', orderSchema, 'salesOrder');
 

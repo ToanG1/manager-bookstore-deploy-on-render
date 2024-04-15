@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment');
+// const autoIncrement = require('mongoose-auto-increment');
 
 const feedbackSchema = new mongoose.Schema({
     title: {
@@ -25,8 +25,8 @@ const feedbackSchema = new mongoose.Schema({
         type: Number
     }
 });
-autoIncrement.initialize(mongoose.connection);
-feedbackSchema.plugin(autoIncrement.plugin, 'feedbacks');
+// autoIncrement.initialize(mongoose.connection);
+// feedbackSchema.plugin(autoIncrement.plugin, 'feedbacks');
 
 const Feedbacks = mongoose.model('Feedbacks', feedbackSchema, 'feedbacks');
 

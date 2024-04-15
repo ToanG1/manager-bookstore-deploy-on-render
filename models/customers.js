@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const autoIncrement = require('mongoose-auto-increment');
+// const autoIncrement = require('mongoose-auto-increment');
 
 const customerSchema = new mongoose.Schema({
     firstName: {
@@ -25,9 +25,9 @@ const customerSchema = new mongoose.Schema({
         type: Number
     }
 });
-autoIncrement.initialize(mongoose.connection);
+// autoIncrement.initialize(mongoose.connection);
 
-customerSchema.plugin(autoIncrement.plugin, 'customers');
+// customerSchema.plugin(autoIncrement.plugin, 'customers');
 const Customers = mongoose.model('Customers',customerSchema,'customers');
 
 module.exports = {

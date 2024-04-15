@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const autoIncrement = require('mongoose-auto-increment');
+// const autoIncrement = require('mongoose-auto-increment');
 
 const productSchema = new mongoose.Schema({
     category: {
@@ -31,9 +31,9 @@ const productSchema = new mongoose.Schema({
         type: String
     }
 });
-autoIncrement.initialize(mongoose.connection);
+// autoIncrement.initialize(mongoose.connection);
 
-productSchema.plugin(autoIncrement.plugin, 'products');
+// productSchema.plugin(autoIncrement.plugin, 'products');
 const Products = mongoose.model('Products', productSchema, 'products');
 
 module.exports = {

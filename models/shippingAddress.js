@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const autoIncrement = require('mongoose-auto-increment');
+// const autoIncrement = require('mongoose-auto-increment');
 
 const addressSchema = new mongoose.Schema({
     address: {
@@ -19,8 +19,8 @@ const addressSchema = new mongoose.Schema({
         type: String
     }
 });
-autoIncrement.initialize(mongoose.connection);
-addressSchema.plugin(autoIncrement.plugin, 'shippingAddress');
+// autoIncrement.initialize(mongoose.connection);
+// addressSchema.plugin(autoIncrement.plugin, 'shippingAddress');
 const ShippingAddress = mongoose.model('ShippingAddress', addressSchema, 'shippingAddress');
 
 module.exports = {

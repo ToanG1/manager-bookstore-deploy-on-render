@@ -1,17 +1,17 @@
-const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment');
+const mongoose = require("mongoose");
+// const autoIncrement = require('mongoose-auto-increment');
 
 const cartSchema = new mongoose.Schema({
-    totalPrice: {
-        type: Number
-    }
+  totalPrice: {
+    type: Number,
+  },
 });
-autoIncrement.initialize(mongoose.connection);
+// autoIncrement.initialize(mongoose.connection);
 
-cartSchema.plugin(autoIncrement.plugin, 'cart');
+// cartSchema.plugin(autoIncrement.plugin, 'cart');
 
-const Cart = mongoose.model('Cart', cartSchema, 'cart');
+const Cart = mongoose.model("Cart", cartSchema, "cart");
 
 module.exports = {
-    Cart
-}
+  Cart,
+};

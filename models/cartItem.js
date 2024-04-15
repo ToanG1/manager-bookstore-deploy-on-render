@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment');
+// const autoIncrement = require('mongoose-auto-increment');
 
 const cartItemSchema = new mongoose.Schema({
     quantity: {
@@ -15,9 +15,9 @@ const cartItemSchema = new mongoose.Schema({
         type: Number
     }
 });
-autoIncrement.initialize(mongoose.connection);
+// autoIncrement.initialize(mongoose.connection);
 
-cartItemSchema.plugin(autoIncrement.plugin, 'cartItem');
+// cartItemSchema.plugin(autoIncrement.plugin, 'cartItem');
 
 const CartItem = mongoose.model('CartItem', cartItemSchema, 'cartItem');
 
