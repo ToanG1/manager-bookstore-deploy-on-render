@@ -1,0 +1,175 @@
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/admin">Admin Page</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/admin/mananger-book">Manager Book
+              <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/admin/mananger-customer-order">Manager
+              Order
+              <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/admin/feedback">FeedBack
+              <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button
+            class="btn btn-outline-success my-2 my-sm-0"
+            type="submit"
+          >Search</button>
+          <a href="/auth/logout"><p
+              class="btn btn-outline-success my-2 my-sm-0"
+              type="submit"
+            >Logout</p></a>
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        {{#each orders}}
+          <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Customer: {{userName}} </h5>
+                <p class="card-text">Addres:{{shippingAddress}} </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Total price: {{totalPrice}}$</li>
+                <li class="list-group-item">Status: {{status}}</li>
+              </ul>
+              <div class="card-body">
+                <button
+                  type="button"
+                  class="card-link btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#exampleModal_{{id}}"
+                >
+                  Detail products
+                </button>
+              <form action="/admin/delete-order" method="post">
+              <input type="hidden" name="id_detele" value="{{id}}">
+                  <button type="submit" class="card-link btn btn-danger">Delete Order</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModal_{{id}}"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Order detail</h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#each products}}
+                        <tr>
+                          <td>{{name}}</td>
+                          <td><img
+                              src="{{image}}"
+                              style="height: 200px;"
+                              class="img-thumbnail"
+                            /></td>
+                          <td>{{quantity}}</td>
+                        </tr>
+                      {{/each}}
+                    </tbody>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                  <form action="/admin/process-order" method="post">
+                  <input type="hidden" name="id" value="{{id}}">
+                    <input type="radio" id="complete" name="status" value="Complete Order" />
+                  <label for="complete">Complete Order</label><br />
+                  <input type="radio" id="cancel" name="status" value="Cancel Order" />
+                  <label for="cancel">Cancel Order</label><br />
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+    crossorigin="anonymous"
+  ></script>
+
+</html>

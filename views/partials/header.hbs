@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/home">
+            <img src="https://res.cloudinary.com/dyzhl4an0/image/upload/v1712498935/BOOK_afooxa.png" alt="logo" style="width:170px ;height: 30px">
+        </a>
+        <div class="navbar-toggler btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-justify icon-nav"></i>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link {{active_home}}" aria-current="page" href="/home">Home</a>
+                </li>
+                <li class="nav-item {{active_shop}}">
+                    <a class="nav-link" href="/shop">Shop</a>
+                </li>
+                <li class="nav-item {{active_cart}}">
+                    <a class="nav-link" href="/cart">Cart</a>
+                </li>
+                <li class="nav-item {{active_order}}">
+                    <a class="nav-link" href="/order">Order</a>
+                </li>
+            </ul>
+            {{#if username}}
+                <div class="d-flex isLogin">
+                    <a href="" class="text-decoration-none d-flex text-dark">
+                        <img  class="me-2 image-avatar" src="https://res.cloudinary.com/awi-ln/image/upload/v1649823573/user_p0t1zb.png" alt="avatar">
+                        <p  class="me-5" style="margin: auto 0">{{username}}</p>
+                    </a>
+                    <form action="/auth/logout" method="get" style="margin: auto 0">
+                        <input class="btn text-danger" type="submit" value="Logout"/>
+                    </form>
+                </div>
+            {{else}}
+                <div class="d-flex login-user">
+                    <a class="text-secondary text-decoration-none me-5" href="/auth/login">Login</a>
+                    <a class="text-decoration-none" href="/auth/register" style="color: black !important;">Register</a>
+                </div>
+            {{/if}}
+
+        </div>
+    </div>
+</nav>
+<hr style="color: grey"/>
+<!--<p style="margin-left: 200px; font-size: 20px; font-weight: 400">Product Detail</p>-->
+<!--<hr style="color: grey"/>-->
+
