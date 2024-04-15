@@ -12,9 +12,9 @@ const orderDetailSchema = new mongoose.Schema({
         type: Number
     }
 });
-autoIncrement.initialize(mongoose.connection);
+// autoIncrement.initialize(mongoose.connection);
 
-orderDetailSchema.plugin(autoIncrement.plugin, 'orderDetail');
+// orderDetailSchema.plugin(autoIncrement.plugin, 'orderDetail');
 
 const OrderDetail = mongoose.model('OrderDetail', orderDetailSchema, 'orderDetail');
 
